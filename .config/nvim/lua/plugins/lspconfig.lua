@@ -21,15 +21,13 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.gdtoolkit.setup({
-				capabilities = capabilities,
-			})
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
 			})
+
 			require("lspconfig")["gdscript"].setup({
 				capabilities = capabilities,
 				name = "godot",
