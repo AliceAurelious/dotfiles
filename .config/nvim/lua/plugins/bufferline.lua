@@ -2,6 +2,7 @@ return {
 	'akinsho/bufferline.nvim',
 	version = "*",
 	config = function()
+		require('transparent').clear_prefix('BufferLine')
 		vim.opt.termguicolors = true
 		require("bufferline").setup {}
 		options = {
@@ -26,7 +27,7 @@ return {
 						if sb and #sb.wins > 0 then
 							local title = " Sidebar" .. string.rep(" ", sb.bounds.width - 8)
 							ret[pos] = "%#EdgyTitle#" ..
-							title .. "%*" .. "%#WinSeparator#│%*"
+							    title .. "%*" .. "%#WinSeparator#│%*"
 							ret[pos .. "_size"] = sb.bounds.width
 						end
 					end
@@ -40,4 +41,5 @@ return {
 			Offset.edgy = true
 		end
 	end,
+
 }
