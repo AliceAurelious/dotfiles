@@ -12,12 +12,19 @@ return {
 				'EndOfBuffer',
 			},
 			-- table: additional groups that should be cleared
-			extra_groups = {},
+			extra_groups = {
+				"NormalFloat",
+				"NvimTreeNormal",
+				"NeoTreeNormal",
+				"NeoTreeFloatBorder",
+				"NeoTreeNormalNC",
+			},
 			-- table: groups you don't want to clear
 			exclude_groups = {},
 			-- function: code to be executed after highlight groups are cleared
 			-- Also the user event "TransparentClear" will be triggered
 			on_clear = function() end,
 		})
+		require('transparent').clear_prefix('BufferLine')
 	end
 }

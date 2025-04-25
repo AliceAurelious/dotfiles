@@ -2,7 +2,6 @@ return {
 	'akinsho/bufferline.nvim',
 	version = "*",
 	config = function()
-		require('transparent').clear_prefix('BufferLine')
 		vim.opt.termguicolors = true
 		require("bufferline").setup {}
 		options = {
@@ -41,5 +40,4 @@ return {
 			Offset.edgy = true
 		end
 	end,
-
 }
