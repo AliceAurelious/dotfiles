@@ -19,5 +19,6 @@ bindkey "^[[3~" delete-char
 
 alias q=exit
 alias girl=man
+alias iceon="docker-network prune"
 
 eval "$(starship init zsh)"
