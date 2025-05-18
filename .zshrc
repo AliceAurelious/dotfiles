@@ -20,5 +20,6 @@ bindkey "^[[3~" delete-char
 alias q=exit
 alias girl=man
 alias iceon="docker-network prune"
+alias neofetch=fastfetch
 
 eval "$(starship init zsh)"
