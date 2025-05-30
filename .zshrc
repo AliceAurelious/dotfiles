@@ -21,5 +21,7 @@ alias q=exit
 alias girl=man
 alias iceon="docker-network prune"
 alias neofetch=fastfetch
+alias gvim="nvim --listen /tmp/godot.pipe"
 
 eval "$(starship init zsh)"
+export PATH="/home/awagner/.gdvm/bin/current_godot:/home/awagner/.gdvm/bin:$PATH"

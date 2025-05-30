@@ -31,7 +31,7 @@ return {
 			require("lspconfig")["gdscript"].setup({
 				capabilities = capabilities,
 				name = "godot",
-				cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
+				cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
 			})
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
