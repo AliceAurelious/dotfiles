@@ -15,6 +15,13 @@ setopt autocd
 setopt interactive_comments
 setopt append_history inc_append_history share_history
 
+#nvim foo
+if ! [ -z "$NVIM" ]; then
+	export EDITOR="vim"
+else
+	export EDITOR="nvim"
+fi
+
 bindkey "^[[3~" delete-char
 
 alias q=exit
@@ -23,6 +30,11 @@ alias ICE_ON="docker-network prune"
 alias neofetch=fastfetch
 alias gvim="nvim --listen /tmp/godot.pipe"
 alias cd=z
+
+#ls stuff
+alias ls="ls --color=auto"
+alias lsa="ls -a"
+alias lsla="ls -la"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
