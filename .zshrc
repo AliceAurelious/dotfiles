@@ -19,9 +19,14 @@ bindkey "^[[3~" delete-char
 
 alias q=exit
 alias girl=man
-alias iceon="docker-network prune"
+alias ICE_ON="docker-network prune"
 alias neofetch=fastfetch
 alias gvim="nvim --listen /tmp/godot.pipe"
+alias cd=z
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+export FZF_DEFAULT_OPTS="--border bold --border rounded --color dark"
 
 eval "$(starship init zsh)"
-export PATH="/home/awagner/.gdvm/bin/current_godot:/home/awagner/.gdvm/bin:$PATH"
+eval "$(zoxide init zsh)"
