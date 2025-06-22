@@ -38,7 +38,7 @@ alias lsla="ls -la"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-export FZF_DEFAULT_OPTS="--border bold --border rounded --color dark"
+export FZF_DEFAULT_OPTS="--border bold --border rounded --color dark --layout reverse --height 15"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
