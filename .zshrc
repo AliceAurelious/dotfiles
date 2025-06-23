@@ -15,21 +15,33 @@ setopt autocd
 setopt interactive_comments
 setopt append_history inc_append_history share_history
 
-#nvim foo
+#nvim foo to have vim in the embeded terminal of nvim as the default editor
 if ! [ -z "$NVIM" ]; then
 	export EDITOR="vim"
 else
-	export EDITOR="nvim"
+	if ! command -v nvim &> /dev/null; then
+		export EDITOR ="vim"
+	else
+		export EDITOR="nvim"
+	fi
 fi
 
-bindkey "^[[3~" delete-char
+#Keybinds
+bindkey "^[[3~" delete-char				# make the del key work	
+bindkey "^[[1;5C" forward-word		# Ctrl + -> moves forward one word
+bindkey "^[[1;5D" backward-word		# Ctrl + <- moves back one word
 
-alias q=exit
-alias girl=man
-alias ICE_ON="docker-network prune"
-alias neofetch=fastfetch
-alias gvim="nvim --listen /tmp/godot.pipe"
-alias cd=z
+#Auto compleation
+autoload -U compinit; compinit
+
+#Aliases
+alias q=exit																# used to that from vin/nvim
+alias :q=exit																# 					"
+alias girl=man															# girls just wanna have fun
+alias ICE_ON="docker-network prune"					# disable all container network in case I am on an ICE train so I can use the train Wifi
+alias neofetch=fastfetch										# just for muscle memories sake
+alias gvim="nvim --listen /tmp/godot.pipe"	# Godot and Nvim 🤝
+alias cd=z																	# Zoxide
 
 #ls stuff
 alias ls="ls --color=auto"
@@ -40,5 +52,8 @@ alias lsla="ls -la"
 source <(fzf --zsh)
 export FZF_DEFAULT_OPTS="--border bold --border rounded --color dark --layout reverse --height 15"
 
+#starship for fancy CLI promt
 eval "$(starship init zsh)"
+
+#Zoxide for nicer nvigation
 eval "$(zoxide init zsh)"
