@@ -52,7 +52,7 @@ alias lsla="ls -la"
 source <(fzf --zsh)
 export FZF_DEFAULT_OPTS="--border bold --border rounded --color dark --layout reverse --height 15"
 
-#starship for fancy CLI promt
+#starship for fancy CLI propmt
 eval "$(starship init zsh)"
 
 #Zoxide for nicer nvigation
