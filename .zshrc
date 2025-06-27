@@ -26,6 +26,8 @@ else
 	fi
 fi
 
+~/cowsay.sh
+
 #Keybinds
 bindkey "^[[3~" delete-char				# make the del key work	
 bindkey "^[[1;5C" forward-word		# Ctrl + -> moves forward one word
@@ -41,12 +43,22 @@ alias girl=man															# girls just wanna have fun
 alias ICE_ON="docker-network prune"					# disable all container network in case I am on an ICE train so I can use the train Wifi
 alias neofetch=fastfetch										# just for muscle memories sake
 alias gvim="nvim --listen /tmp/godot.pipe"	# Godot and Nvim 🤝
-alias cd=z																	# Zoxide
 
 #ls stuff
 alias ls="ls --color=auto"
 alias lsa="ls -a"
 alias lsla="ls -la"
+
+#asdf version manager
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+#asdf shell compleation
+mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
+
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -56,4 +68,7 @@ export FZF_DEFAULT_OPTS="--border bold --border rounded --color dark --layout re
 eval "$(starship init zsh)"
 
 #Zoxide for nicer nvigation
-eval "$(zoxide init zsh)"
+if command -v zoxide &> /dev/null; then
+	eval "$(zoxide init zsh)"
+	alias cd=z
+fi

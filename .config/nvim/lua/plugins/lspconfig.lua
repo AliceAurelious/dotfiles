@@ -18,13 +18,20 @@ return {
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local lspconfig = require("lspconfig")
+			--lua
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
+			--python
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 			})
+			--bash
 			lspconfig.bashls.setup({
+				capabilities = capabilities,
+			})
+			--puppet
+			lspconfig.puppet.setup({
 				capabilities = capabilities,
 			})
 
