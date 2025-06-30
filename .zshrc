@@ -29,25 +29,31 @@ fi
 ~/cowsay.sh
 
 #Keybinds
-bindkey "^[[3~" delete-char				# make the del key work	
-bindkey "^[[1;5C" forward-word		# Ctrl + -> moves forward one word
-bindkey "^[[1;5D" backward-word		# Ctrl + <- moves back one word
+bindkey "^[[3~" delete-char									# make the del key work	
+bindkey "^[[1;5C" forward-word							# Ctrl + -> moves forward one word
+bindkey "^[[1;5D" backward-word							# Ctrl + <- moves back one word
 
 #Auto compleation
 autoload -U compinit; compinit
 
 #Aliases
 alias q=exit																# used to that from vin/nvim
-alias :q=exit																# 					"
+alias :q=exit																#							"
 alias girl=man															# girls just wanna have fun
 alias ICE_ON="docker-network prune"					# disable all container network in case I am on an ICE train so I can use the train Wifi
 alias neofetch=fastfetch										# just for muscle memories sake
+
+#nvim
+alias vim=nvim
 alias gvim="nvim --listen /tmp/godot.pipe"	# Godot and Nvim 🤝
 
 #ls stuff
 alias ls="ls --color=auto"
 alias lsa="ls -a"
 alias lsla="ls -la"
+
+#Git stuff
+alias "gitlog"='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n"'
 
 #asdf version manager
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
