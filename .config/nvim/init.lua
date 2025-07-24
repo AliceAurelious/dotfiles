@@ -14,7 +14,7 @@ require("config.lazy")
 
 --vim.opt.statuscolumn ='"%s%<%2l%>|" .. vim.v.relnum .. "%=" .. get_fold(vim.v.lnum)'
 
---vim.opt.statuscolumn = "%s %{v:relnum} %{v:lnum}"
+--vim.opt.statuscolumn = "%s %{v:relnum} | %{v:lnum}"
 
 -- smoler tabs
 vim.cmd("set shiftwidth=2")

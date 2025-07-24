@@ -34,6 +34,10 @@ return {
 			lspconfig.puppet.setup({
 				capabilities = capabilities,
 			})
+			--.NET
+			lspconfig.netcoredbg.setup({
+				capabilities = capabilities,
+			})
 
 			require("lspconfig")["gdscript"].setup({
 				capabilities = capabilities,
