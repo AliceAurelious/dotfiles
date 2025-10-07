@@ -14,6 +14,7 @@ compinit
 setopt autocd
 setopt interactive_comments
 setopt append_history inc_append_history share_history
+setopt nonomatch # make wildcard work like in bash
 
 #nvim foo to have vim in the embeded terminal of nvim as the default editor
 if ! [ -z "$NVIM" ]; then
