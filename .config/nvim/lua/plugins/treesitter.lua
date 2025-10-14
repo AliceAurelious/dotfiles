@@ -1,12 +1,15 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	build = ':TSUpdate',
-	opts = {
-		ensure_installed = {
-			'gdscript',
-			'godot_resource',
-			'gdshader'
-		},
-		auto_install = true,
-	}
+	branch = "master",
+	lazy = false,
+	build = ":TSUpdate",
+
+	config = function()
+		local config = require("nvim-treesitter.configs")
+		config.setup({
+			auto_install = true,
+			highlight = { enable = true },
+			indent = { enable = true },
+		})
+	end,
 }

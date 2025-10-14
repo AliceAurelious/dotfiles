@@ -3,34 +3,20 @@ return {
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"3rd/image.nvim",
-		opts = {}
-	}, -- Optional image support in preview window: See `# Preview Mode` for more information
+		"MunifTanjim/nui.nvim",
+		"nvim-tree/nvim-web-devicons", -- optional, but recommended
+	},
+
 	config = function()
+		vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {}) -- open filesystem on the right side like most IDEs by pressing Ctrl + n
 		require("neo-tree").setup({
-			window = {
-				mappings = {
-					["P"] = {
-						"toggle_preview",
-						config = {
-							use_float = true,
-							use_image_nvim = true,
-							-- title = 'Neo-tree Preview',
-						},
-					},
-				}
-			},
 			filesystem = {
 				filtered_items = {
 					visible = true,
 					hide_dotfiles = false,
-					hide_gitignored = true,
-				},
+					hide_gitignoerd = true,
+				}
 			}
 		})
-		source_selector = {
-			winbar = false,
-			statusline = false
-		}
 	end,
 }

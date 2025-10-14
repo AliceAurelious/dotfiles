@@ -27,7 +27,7 @@ else
 	fi
 fi
 
-~/cowsay.sh
+#~/cowsay.sh
 
 #Keybinds
 bindkey "^[[3~" delete-char									# make the del key work	
@@ -90,7 +90,7 @@ alias vim=nvim
 alias gvim="nvim --listen /tmp/godot.pipe"	# Godot and Nvim 🤝
 
 #ls stuff
-alias ls="ls --color=auto"
+alias ls="ls --color=auto --classify"
 alias lsa="ls -a"
 alias lsla="ls -la"
 
