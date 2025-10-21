@@ -1,6 +1,6 @@
 return {
 	{
-		"nvim-telescope/telescope.nvim",
+		"nvim-telescope/telescope.nvim", -- search for files in your working directory
 		tag = "0.1.8",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -13,7 +13,8 @@ return {
 		end,
 	},
 	{
-		"nvim-telescope/telescope-ui-select.nvim",
+		"nvim-telescope/telescope-ui-select.nvim", -- allow other plugins to use the telescope ui for their features
+
 		config = function()
 			-- This is your opts table
 			require("telescope").setup({

@@ -33,15 +33,15 @@ return {
 	},
 
 	{
-			 -- add dracula
-		{ "Mofiqul/dracula.nvim" },
-
-		-- Configure LazyVim to load dracula
+		-- add material.nvim theme
 		{
-			"LazyVim/LazyVim",
-			opts = {
-				colorscheme = "dracula",
-			},
+			"marko-cerovac/material.nvim",
+			lazy = false,
+			priority = 1000,
+
+			config = function()
+				vim.cmd([[colorscheme material-deep-ocean]]) -- set colorscheme to material.nvim
+			end,
 		},
 	},
 
@@ -55,7 +55,7 @@ return {
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "dracula-nvim",
+					theme = "material-nvim", -- set lualine colorscheme to material.nvim
 				},
 			})
 		end,

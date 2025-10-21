@@ -84,6 +84,7 @@ alias :q=exit																#							"
 alias girl=man															# girls just wanna have fun
 alias ICE_ON="docker-network prune"					# disable all container network in case I am on an ICE train so I can use the train Wifi
 alias neofetch=fastfetch										# just for muscle memories sake
+alias rm=trash-put													# put files in trash before deleting
 
 #nvim
 alias vim=nvim

@@ -11,7 +11,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright" },
+				ensure_installed = { "lua_ls", "pyright", "bashls", "puppet" },
 			})
 		end,
 	},
@@ -19,12 +19,36 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({}) -- lua
-			lspconfig.pyright.setup({}) -- python
+			-- tells the lsp that it can do recomendations for completions
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			local lspconfig = vim.lsp.config
+			-- lua
+			lspconfig["lua_ls"] = {
+				capabilities = capabilities,
+			}
+			-- bash
+			lspconfig["bashls"] = {
+				capabilities = capabilities,
+			}
+			-- python
+			lspconfig["pyright"] = {
+				capabilities = capabilities,
+			}
+			-- gdscript
+			lspconfig["gdscript"] = {
+				capabilities = capabilities,
+				name = "godot",
+				cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
+			}
+			-- puppet
+			lspconfig["puppet"] = {
+				capabilities = capabilities,
+			}
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},

@@ -1,5 +1,5 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
+	"nvim-treesitter/nvim-treesitter", -- improved syntax highlighting thru tree-sitter based highlighting
 	branch = "master",
 	lazy = false,
 	build = ":TSUpdate",

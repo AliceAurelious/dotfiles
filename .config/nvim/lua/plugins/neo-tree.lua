@@ -1,5 +1,5 @@
 return {
-	"nvim-neo-tree/neo-tree.nvim",
+	"nvim-neo-tree/neo-tree.nvim", -- adds a filesystem browser
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -15,8 +15,8 @@ return {
 					visible = true,
 					hide_dotfiles = false,
 					hide_gitignoerd = true,
-				}
-			}
+				},
+			},
 		})
 	end,
 }
