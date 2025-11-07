@@ -46,6 +46,16 @@ return {
 				capabilities = capabilities,
 			}
 
+			-- make hovers have a border
+			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+
+			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+				opts = opts or {}
+				opts.border = opts.border or "rounded"
+
+				return orig_util_open_floating_preview(contents, syntax, opts, ...)
+			end
+
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})

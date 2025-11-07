@@ -121,3 +121,11 @@ if command -v zoxide &> /dev/null; then
 	eval "$(zoxide init zsh)"
 	alias cd=z
 fi
+
+# pnpm
+export PNPM_HOME="/home/awagner/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
