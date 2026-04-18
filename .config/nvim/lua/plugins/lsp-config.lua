@@ -1,17 +1,23 @@
 return {
 	-- mason installs and manages lsps
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	-- mason-lspconfig installs lsps that are configured automatically
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			-- Declare here, but setup is done in mason.lua
+			"mason-org/mason.nvim",
+			-- The configs are sourced here
+			"neovim/nvim-lspconfig",
+		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "bashls", "puppet" },
+				ensure_installed = { "lua_ls", "pyright", "bashls", "puppet", "html", "ccsls", "nil_ls", "jinja_lsp" },
 			})
 		end,
 	},
@@ -19,33 +25,28 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			-- tells the lsp that it can do recomendations for completions
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			--vim.lsp.log.set_level("trace")
+			--vim.lsp.log.set_format_func(vim.inspect)
 
-			local lspconfig = vim.lsp.config
-			-- lua
-			lspconfig["lua_ls"] = {
-				capabilities = capabilities,
-			}
-			-- bash
-			lspconfig["bashls"] = {
-				capabilities = capabilities,
-			}
-			-- python
-			lspconfig["pyright"] = {
-				capabilities = capabilities,
-			}
+			-- Add the completion capabilities to the default config for every LSP
+			local cmp_nvim_lsp = require("cmp_nvim_lsp")
+			vim.lsp.config("*", {
+				capabilities = cmp_nvim_lsp.default_capabilities(),
+			})
+
 			-- gdscript
-			lspconfig["gdscript"] = {
-				capabilities = capabilities,
+			vim.lsp.config("gdscript", {
+				capabilities = cmp_nvim_lsp.default_capabilities(),
 				name = "godot",
 				cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
-			}
-			-- puppet
-			lspconfig["puppet"] = {
-				capabilities = capabilities,
-			}
-
+			})
+			vim.lsp.enable("gdscript")
+			--lspconfig["gdscript"] = {
+			--	capabilities = capabilities,
+			--	name = "godot",
+			--	cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
+			--	vim.lsp.enable("gdscript"),
+			--}
 			-- make hovers have a border
 			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 

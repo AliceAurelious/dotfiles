@@ -1,9 +1,7 @@
 return {
 	{
-		"hrsh7th/cmp-nvim-lsp", -- takes suggestions from the lsps
-	},
-	{
 		"L3MON4D3/LuaSnip", -- add snippets for auto completions
+		build = "make install_jsregexp",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
@@ -11,6 +9,9 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp", -- completion engine
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp", -- takes suggestions from the lsps
+		},
 
 		config = function()
 			local cmp = require("cmp")

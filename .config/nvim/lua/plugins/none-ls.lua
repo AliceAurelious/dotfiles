@@ -17,6 +17,16 @@ return {
 				-- bash linting and formatting
 				null_ls.builtins.formatting.shellcheck,
 				null_ls.builtins.diagnostics.beautysh,
+
+				-- html & css linting and formatting
+				null_ls.builtins.formatting.ast_grep,
+				null_ls.builtins.diagnostics.ast_grep,
+
+				-- nix linting and formatting
+				null_ls.builtins.formatting.nixfmt,
+
+				-- nunjucks
+				null_ls.builtins.diagnostics.jinja_lsp,
 			},
 		})
 

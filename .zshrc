@@ -14,7 +14,8 @@ compinit
 setopt autocd
 setopt interactive_comments
 setopt append_history inc_append_history share_history
-setopt nonomatch # make wildcard work like in bash
+setopt nonomatch 	# make wildcard work like in bash
+setopt correct 		# suggest commands if command cant be found 
 
 #nvim foo to have vim in the embeded terminal of nvim as the default editor
 if ! [ -z "$NVIM" ]; then
@@ -34,7 +35,9 @@ bindkey "^[[3~" delete-char									# make the del key work
 bindkey "^[[1;5C" forward-word							# Ctrl + -> moves forward one word
 bindkey "^[[1;5D" backward-word							# Ctrl + <- moves back one word
 
-#the followint were copied from romkatv in this reddit thread https://www.reddit.com/r/zsh/comments/eblqvq/del_pgup_and_pgdown_input_in_terminal/
+
+##############
+# the followint were copied from romkatv in this reddit thread https://www.reddit.com/r/zsh/comments/eblqvq/del_pgup_and_pgdown_input_in_terminal/
 # If NumLock is off, translate keys to make them appear the same as with NumLock on.
 bindkey -s '^[OM' '^M'  # enter
 bindkey -s '^[Ok' '+'
@@ -74,7 +77,10 @@ bindkey '^[[D'    backward-char                 # left       move cursor one cha
 bindkey '^[[C'    forward-char                  # right      move cursor one char forward
 bindkey '^[[A'    up-line-or-beginning-search   # up         prev command in history
 bindkey '^[[B'    down-line-or-beginning-search # down       next command in history
+##############
 
+
+# my stuff again
 #Auto compleation
 autoload -U compinit; compinit
 
@@ -108,6 +114,9 @@ asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+# case insensitive path completions
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -123,7 +132,7 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # pnpm
-export PNPM_HOME="/home/awagner/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
